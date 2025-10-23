@@ -1,0 +1,19 @@
+name: Pipeline
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Runner environment
+
+    steps:
+      # Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Example: Run a simple script
+      - name: Run hello world
+        run: echo "✅ GitHub Actions pipeline is running!"
