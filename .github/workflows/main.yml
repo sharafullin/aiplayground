@@ -29,11 +29,13 @@ jobs:
           terraform_version: 1.9.6
       
       - name: Terraform Init
+        uses: AzureCLI@2
         run: |
           cd terraform
           terraform init
       
       - name: Terraform Plan
+        uses: AzureCLI@2
         run: |
           cd terraform
           terraform plan
