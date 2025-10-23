@@ -32,12 +32,10 @@ jobs:
         working-directory: terraform
         shell: bash
         run: |
-          cd terraform
           terraform init
       
       - name: Terraform Plan
         working-directory: terraform
         shell: bash
         run: |
-          cd terraform
           terraform plan
