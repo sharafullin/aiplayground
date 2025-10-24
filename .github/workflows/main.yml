@@ -1,4 +1,4 @@
-name: Pipeline
+name: Deploy
 
 on: workflow_dispatch
 
@@ -42,6 +42,7 @@ jobs:
   apply:
     runs-on: ubuntu-latest  # Runner environment
     needs: plan 
+    environment: Terraform Deploy
     steps:
       # Checkout your code
       - name: Checkout repository
@@ -66,7 +67,7 @@ jobs:
         run: |
           terraform init
       
-      - name: Terraform Plan
+      - name: Terraform Apply
         working-directory: terraform
         shell: bash
         run: |
