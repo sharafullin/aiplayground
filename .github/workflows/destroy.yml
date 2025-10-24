@@ -1,0 +1,39 @@
+name: Destroy Infrastructure
+
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest  # Runner environment
+
+    steps:
+      # Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login via OIDC
+        uses: azure/login@v2
+        with:
+          client-id: a8eb6959-65bd-46a7-ab16-67a02fc7663f
+          tenant-id: b8afe45d-a365-4f0a-837a-6493cdc22154
+          subscription-id: 534f3f2d-a4b5-4218-96ad-1b90beb94e1b
+          enable-oidc: true
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.4
+      
+      - name: Terraform Init
+        working-directory: terraform
+        shell: bash
+        run: terraform init
+      
+      - name: Terraform Destroy
+        working-directory: terraform
+        shell: bash
+        run: terraform destroy -auto-approve
