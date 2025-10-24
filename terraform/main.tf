@@ -6,10 +6,11 @@ module "rg-test" {
   location = var.location
 }
 
-module "rg-test2" {
-  source  = "Azure/avm-res-resources-resourcegroup/azurerm"
-  version = "0.2.1"
+module "ai_foundry" {
+  source = "Azure/avm-ptn-aiml-ai-foundry/azurerm"
 
-  name = "rg-test2"
-  location = var.location
+  # required inputs
+  project_prefix      = "myproject"
+  location            = var.location
+  resource_group_name = rg-test.name
 }
