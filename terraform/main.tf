@@ -1,4 +1,4 @@
-module "avm-res-resources-resourcegroup" {
+module "rg-test" {
   source  = "Azure/avm-res-resources-resourcegroup/azurerm"
   version = "0.2.1"
 
@@ -6,7 +6,7 @@ module "avm-res-resources-resourcegroup" {
   location = var.location
 }
 
-module "avm-res-resources-resourcegroup" {
+module "rg-test2" {
   source  = "Azure/avm-res-resources-resourcegroup/azurerm"
   version = "0.2.1"
 
