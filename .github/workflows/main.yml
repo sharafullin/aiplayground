@@ -41,7 +41,7 @@ jobs:
           terraform plan
   apply:
     runs-on: ubuntu-latest  # Runner environment
-
+    needs: plan 
     steps:
       # Checkout your code
       - name: Checkout repository
